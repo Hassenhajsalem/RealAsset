@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { TextField } from '@mui/material';
 import Button from '@mui/material/Button';
 
@@ -120,8 +121,11 @@ const KYCForm = () => {
           onChange={handleChange}
         />
         <div>
-          <label htmlFor="picture">Picture Holding Government ID:</label>
-          <input id="picture" type="file" accept="image/*" onChange={handlePictureChange} />
+        <label htmlFor="picture">Picture Holding Government ID:
+        <input id="picture" type="file" accept="image/*" onChange={handlePictureChange} />
+
+        </label>
+
         </div>
         <Button type="submit" variant="contained" color="primary">
           Submit

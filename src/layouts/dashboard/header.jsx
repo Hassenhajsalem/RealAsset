@@ -13,18 +13,16 @@ import IconButton from '@mui/material/IconButton';
 import { useResponsive } from 'src/hooks/use-responsive';
 
 import { bgBlur } from 'src/theme/css';
+import { account } from 'src/_mock/account';
 
 import Iconify from 'src/components/iconify';
 
-
+import config from '../../config.json'
 import Searchbar from './common/searchbar';
 import { NAV, HEADER } from './config-layout';
 import AccountPopover from './common/account-popover';
 import LanguagePopover from './common/language-popover';
 import NotificationsPopover from './common/notifications-popover';
-import { account } from 'src/_mock/account';
-import {user} from 'src/_mock/user';
-import config from '../../../src/config.json'
 
 // ----------------------------------------------------------------------
 
@@ -106,7 +104,7 @@ account.isAdmin= (accountconnect===config.ADMIN)
 
 console.log('user',account)
   return (
-    <>
+    
     <AppBar
       sx={{
         boxShadow: 'none',
@@ -135,7 +133,7 @@ console.log('user',account)
 
     </AppBar>
 
-    </>
+    
   );
 }
 

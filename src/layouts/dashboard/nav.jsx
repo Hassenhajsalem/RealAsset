@@ -21,8 +21,8 @@ import Logo from 'src/components/logo';
 import Scrollbar from 'src/components/scrollbar';
 
 import { NAV } from './config-layout';
-import navConfig from './config-navigation';
 import navConfigure from './config-nav';
+import navConfig from './config-navigation';
 
 // ----------------------------------------------------------------------
 
@@ -63,13 +63,13 @@ export default function Nav({ openNav, onCloseNav }) {
     </Box>
   );
 
-  const renderMenu = (
-    <Stack component="nav" spacing={0.5} sx={{ px: 2 }}>
-      {navConfig.map((item) => (
-        <NavItem key={item.title} item={item} />
-      ))}
-    </Stack>
-  );
+  // const renderMenu = (
+  //   <Stack component="nav" spacing={0.5} sx={{ px: 2 }}>
+  //     {navConfig.map((item) => (
+  //       <NavItem key={item.title} item={item} />
+  //     ))}
+  //   </Stack>
+  // );
 
 
   const renderContent = (

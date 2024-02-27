@@ -2,15 +2,17 @@ import { ethers } from 'ethers';
 import React, { useState, useEffect } from 'react';
 
 import Container from '@mui/material/Container';
-import { Modal, Button, TextField, Card, CardMedia, CardContent, Typography, CardActions, Grid } from '@mui/material';
+import {Card,Grid , Modal,   Button, TextField, CardMedia, Typography, CardContent, CardActions } from '@mui/material';
+
 import { fNumber } from 'src/utils/format-number';
+
 import config from '../../../config.json';
 import image from '../../../assets/houses.png';
 import RealEstateABI from '../../../abis/RealEstate.json';
 
 export default function ProductsView() {
   const [provider, setProvider] = useState(null);
-  const [account, setAccount] = useState(null);
+  // const [account, setAccount] = useState(null);
   const [homes, setHomes] = useState([]);
   const [sharesToBuy, setSharesToBuy] = useState('');
   const [selectedProperty, setSelectedProperty] = useState(null);
@@ -54,11 +56,11 @@ export default function ProductsView() {
 
         setHomes(fetchedHomes);
 
-        window.ethereum.on('accountsChanged', async () => {
-          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-          const connectedAccount = ethers.utils.getAddress(accounts[0]);
-          setAccount(connectedAccount);
-        });
+        // window.ethereum.on('accountsChanged', async () => {
+        //   const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        //   // const connectedAccount = ethers.utils.getAddress(accounts[0]);
+        //   // setAccount(connectedAccount);
+        // });
       } catch (error) {
         console.error("Error loading blockchain data:", error);
       }

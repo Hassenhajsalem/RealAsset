@@ -1,18 +1,21 @@
 import { ethers } from 'ethers';
 import { useState, useEffect } from 'react';
+
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import TableContainer from '@mui/material/TableContainer';
+import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
+import TableRow from '@mui/material/TableRow';
 import TableHead from '@mui/material/TableHead';
 import TableBody from '@mui/material/TableBody';
-import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
-import Paper from '@mui/material/Paper';
+import Container from '@mui/material/Container';
+import { Card, Button,CardContent } from '@mui/material';
+import TableContainer from '@mui/material/TableContainer';
+
+import { account } from 'src/_mock/account';
+
 import config from '../../../config.json';
 import RealEstateABI from '../../../abis/RealEstate.json';
-import { account } from 'src/_mock/account';
-import { Card, CardContent, Button } from '@mui/material';
 
 export default function UserPage() {
   const [propertyBalances, setPropertyBalances] = useState([]);
@@ -32,7 +35,7 @@ export default function UserPage() {
         const realEstate = new ethers.Contract(networkConfig.realEstate.address, RealEstateABI.abi, providerInstance);
         
         window.ethereum.on('accountsChanged', async (accounts) => {
-          const connectedAccount = ethers.utils.getAddress(accounts[0]);
+          // const connectedAccount = ethers.utils.getAddress(accounts[0]);
           // setAccount(connectedAccount);
         });
 
@@ -41,7 +44,7 @@ export default function UserPage() {
 
         if (account) {
           for (let i = 0; i < count; i+=1) {
-            const balance = await realEstate.balanceOf(account.address, i);
+            const balance = realEstate.balanceOf(account.address, i);
             balances.push(balance.toString()); // Convert balance to string if necessary
           }
         }
@@ -53,7 +56,7 @@ export default function UserPage() {
     }
 
     fetchPropertyBalances();
-  }, [account]);
+  }, []);
 
   const handleSellProperty = (index) => {
     // Implement the logic to sell the property at the given index

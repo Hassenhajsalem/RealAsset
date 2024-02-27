@@ -1,12 +1,14 @@
+import { ethers } from 'ethers'; // Import ethers.js library
+
 import React, { useState } from 'react';
+
 import Stack from '@mui/material/Stack';
+import { TextField } from '@mui/material';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
 import Iconify from 'src/components/iconify';
-import { ethers } from 'ethers'; // Import ethers.js library
-import { TextField } from '@mui/material';
 
 import config from '../../../config.json';
 import RealEstateABI from '../../../abis/RealEstate.json';
@@ -23,7 +25,7 @@ export default function BlogView() {
     const { id, value } = e.target;
   
     // Check if the value is a valid number for the first two fields
-    if ((id === 'totalSupply' || id === 'tokenPrice') && !isNaN(value)) {
+    if ((id === 'totalSupply' || id === 'tokenPrice') && !Number.isNaN(value)) {
       setNewProperty((prevState) => ({
         ...prevState,
         [id]: value
@@ -46,8 +48,8 @@ export default function BlogView() {
       const signer = provider.getSigner();
       const network = await provider.getNetwork();
       const contractAddress = config[network.chainId].realEstate.address // Provide the address of your deployed smart contract
-      const abi = RealEstateABI.abi
-      const contract = new ethers.Contract(contractAddress, abi, signer);
+      // const abi = RealEstateABI.abi
+      const contract = new ethers.Contract(contractAddress, RealEstateABI.abi, signer);
 
       const tx = await contract.createProperty(
         newProperty.totalSupply,
