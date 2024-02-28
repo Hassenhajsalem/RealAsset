@@ -19,7 +19,10 @@ const KYCForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
   };
 
   const handlePictureChange = (e) => {
@@ -52,6 +55,7 @@ const KYCForm = () => {
           required
           id="fullName"
           label="Full Name"
+          name="fullName"
           value={formData.fullName}
           onChange={handleChange}
         />
@@ -60,6 +64,7 @@ const KYCForm = () => {
           id="email"
           label="Email"
           type="email"
+          name="email"
           value={formData.email}
           onChange={handleChange}
         />
@@ -68,6 +73,7 @@ const KYCForm = () => {
           id="dob"
           label="Date of Birth"
           type="date"
+          name="dob"
           value={formData.dob}
           onChange={handleChange}
           InputLabelProps={{
@@ -78,6 +84,7 @@ const KYCForm = () => {
           required
           id="address"
           label="Address"
+          name="address"
           value={formData.address}
           onChange={handleChange}
         />
@@ -85,6 +92,7 @@ const KYCForm = () => {
           required
           id="idType"
           label="ID Type"
+          name="idType"
           value={formData.idType}
           onChange={handleChange}
         />
@@ -92,6 +100,7 @@ const KYCForm = () => {
           required
           id="idNumber"
           label="ID Number"
+          name="idNumber"
           value={formData.idNumber}
           onChange={handleChange}
         />
@@ -100,6 +109,7 @@ const KYCForm = () => {
           id="idExpiryDate"
           label="ID Expiry Date"
           type="date"
+          name="idExpiryDate"
           value={formData.idExpiryDate}
           onChange={handleChange}
           InputLabelProps={{
@@ -110,6 +120,7 @@ const KYCForm = () => {
           required
           id="issuingCountry"
           label="Issuing Country"
+          name="issuingCountry"
           value={formData.issuingCountry}
           onChange={handleChange}
         />
@@ -117,14 +128,14 @@ const KYCForm = () => {
           required
           id="taxId"
           label="Tax ID"
+          name="taxId"
           value={formData.taxId}
           onChange={handleChange}
         />
         <div>
-        <label htmlFor="picture">Picture Holding Government ID:
-        <input id="picture" type="file" accept="image/*" onChange={handlePictureChange} />
-
-        </label>
+          <label htmlFor="picture">Picture Holding Government ID:
+          <input id="picture" type="file" accept="image/*" onChange={handlePictureChange} />
+          </label>
 
         </div>
         <Button type="submit" variant="contained" color="primary">
