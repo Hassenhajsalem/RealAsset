@@ -27,6 +27,11 @@ const navConfigure = [
     path: '/kyc',
     icon: icon('ic_cart'),
   },
+  {
+    title: 'support&FAQ',
+    path: '/support',
+    icon: icon('ic_cart'),
+  },
 
 
 ];
